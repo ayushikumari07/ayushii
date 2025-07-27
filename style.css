@@ -5,19 +5,19 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   background: #fff;
   color: #222;
   line-height: 1.6;
 }
 .container {
-  width: 90%;
+  width: 92%;
   max-width: 1100px;
   margin: 0 auto;
 }
 nav {
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(12,110,252,0.07);
   padding: 1.2rem 0;
 }
 .nav-container {
@@ -26,28 +26,30 @@ nav {
   justify-content: space-between;
 }
 .logo {
-  font-size: 1.7rem;
-  font-weight: bold;
-  color: #2d2d2d;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0C6EFC;
   letter-spacing: 1px;
 }
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 2.2rem;
 }
 .nav-links a {
   text-decoration: none;
-  color: #2d2d2d;
-  font-weight: 500;
+  color: #222;
+  font-weight: 600;
+  font-size: 1.1rem;
   transition: color 0.2s;
+  letter-spacing: 0.5px;
 }
 .nav-links a:hover {
-  color: #6c63ff;
+  color: #0C6EFC;
 }
 .hero {
   background: linear-gradient(90deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 3rem 0 2rem 0;
+  padding: 3.5rem 0 2.5rem 0;
 }
 .hero-content {
   display: flex;
@@ -56,30 +58,41 @@ nav {
   flex-wrap: wrap;
 }
 .profile-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 160px;
   height: 160px;
-  object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #fff;
-  box-shadow: 0 4px 24px rgba(108,99,255,0.08);
-  background: #eee;
+  background: #0C6EFC;
+  box-shadow: 0 4px 24px rgba(12,110,252,0.08);
+  margin-bottom: 1.2rem;
 }
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   font-weight: 700;
-  color: #2d2d2d;
+  color: #0C6EFC;
   margin-bottom: 0.5rem;
+  line-height: 1.15;
 }
 .subtitle {
-  font-size: 1.2rem;
-  color: #6c63ff;
-  font-weight: 500;
+  font-size: 1.25rem;
+  color: #7F2275;
+  font-weight: 600;
+  margin-top: 0.5rem;
 }
 .section {
   padding: 3rem 0 2rem 0;
 }
 .section.alt {
   background: #f5f7fa;
+}
+.section h2 {
+  color: #0C6EFC;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
 }
 .books {
   display: flex;
@@ -89,9 +102,9 @@ nav {
 }
 .book {
   background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(44,62,80,0.07);
-  padding: 1.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(12,110,252,0.07);
+  padding: 1.5rem 1.2rem;
   flex: 1 1 220px;
   min-width: 220px;
   max-width: 260px;
@@ -99,30 +112,38 @@ nav {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: box-shadow 0.2s;
+}
+.book:hover {
+  box-shadow: 0 4px 24px rgba(12,110,252,0.13);
 }
 .book-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 90px;
   height: 130px;
-  object-fit: cover;
-  border-radius: 0.5rem;
   margin-bottom: 1rem;
-  background: #ddd;
 }
 .btn {
   display: inline-block;
-  background: #6c63ff;
+  background: #0C6EFC;
   color: #fff;
-  padding: 0.7rem 2rem;
+  padding: 0.8rem 2.2rem;
   border-radius: 2rem;
   text-decoration: none;
-  font-weight: 600;
-  margin-top: 1rem;
-  transition: background 0.2s;
+  font-weight: 700;
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
   border: none;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(12,110,252,0.07);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 .btn:hover {
-  background: #554ee2;
+  background: #674FE6;
+  box-shadow: 0 4px 16px rgba(103,79,230,0.13);
 }
 .press-list {
   list-style: none;
@@ -132,6 +153,10 @@ nav {
   margin-bottom: 1.2rem;
   font-size: 1.1rem;
   color: #444;
+  background: #fff;
+  border-radius: 0.7rem;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(12,110,252,0.04);
 }
 .contact-form {
   display: flex;
@@ -142,29 +167,32 @@ nav {
 }
 .contact-form input,
 .contact-form textarea {
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
+  padding: 0.9rem;
+  border: 1.5px solid #0C6EFC;
+  border-radius: 0.7rem;
   font-size: 1rem;
   width: 100%;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 .contact-form textarea {
   min-height: 100px;
   resize: vertical;
 }
 .contact-form label {
-  font-size: 0.95rem;
-  color: #555;
+  font-size: 1rem;
+  color: #674FE6;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 footer {
-  background: #222;
+  background: #0C6EFC;
   color: #fff;
   text-align: center;
   padding: 1.2rem 0;
   margin-top: 2rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 /* Responsive Design */
@@ -181,14 +209,15 @@ footer {
 }
 @media (max-width: 600px) {
   .container {
-    width: 98%;
+    width: 99%;
     padding: 0 0.5rem;
   }
   .nav-links {
     gap: 1rem;
+    font-size: 1rem;
   }
   .hero h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .profile-img {
     width: 110px;
