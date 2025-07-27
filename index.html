@@ -4,44 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ayushi Kumari - Personal Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    body { font-family: 'Poppins', Arial, sans-serif; }
+    body { font-family: 'Montserrat', Arial, sans-serif; }
+    .serif { font-family: 'Playfair Display', serif; }
   </style>
 </head>
 <body>
-  <nav>
+  <nav class="nav-bar">
     <div class="container nav-container">
-      <div class="logo">Ayushi Kumari</div>
+      <div class="logo serif">Ayushi Kumari</div>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" class="serif">About</a></li>
+        <li><a href="#experience" class="serif">Experience</a></li>
+        <li><a href="#portfolio" class="serif">Portfolio</a></li>
+        <li><a href="#contact" class="serif">Contact</a></li>
       </ul>
     </div>
   </nav>
   <header class="hero">
     <div class="container hero-content">
-      <span class="profile-img">
+      <div class="hero-img">
         <!-- SVG Profile Placeholder -->
-        <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="80" cy="80" r="80" fill="#0C6EFC"/>
-          <circle cx="80" cy="70" r="40" fill="#FAAD4D"/>
-          <ellipse cx="80" cy="120" rx="50" ry="30" fill="#fff" fill-opacity="0.7"/>
+        <svg width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:24px;">
+          <rect width="420" height="420" rx="24" fill="#d9cba2"/>
+          <text x="50%" y="50%" text-anchor="middle" fill="#6B8E6E" font-size="32" font-family="Playfair Display, serif" dy=".3em">Profile</text>
         </svg>
-      </span>
-      <div>
-        <h1>Hi, I’m Ayushi.<br>Let's craft stories that matter.</h1>
-        <p class="subtitle">Inspire, Inform and Engage</p>
+      </div>
+      <div class="hero-text">
+        <h1 class="serif hero-title">Hi, I’m Ayushi.<br>Let’s craft stories that matter.</h1>
+        <p class="serif hero-subtitle">Inspire, Inform and Engage</p>
       </div>
     </div>
   </header>
-  <section id="about" class="section">
+  <section id="about" class="section about-section">
     <div class="container">
-      <h2>About Kapoor: Meet the Mind Behind the Movement</h2>
-      <p>This is a space to share more about the business: who's behind it, what it does and what this site has to offer. It’s an opportunity to tell the story behind the business or describe a special service or product it offers. You can use this section to share the company's history or highlight a particular feature that sets it apart from competitors.</p>
+      <h2 class="serif about-title">About Kapoor: Meet the Mind Behind the Movement</h2>
+      <svg class="about-decor" width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 110 Q 200 10 390 110" stroke="#c2b280" stroke-width="3" fill="none"/>
+      </svg>
+      <p class="serif about-body">This is a space to share more about the business: who's behind it, what it does and what this site has to offer. It’s an opportunity to tell the story behind the business or describe a special service or product it offers. You can use this section to share the company's history or highlight a particular feature that sets it apart from competitors.</p>
     </div>
   </section>
   <section id="books" class="section alt">
