@@ -20,6 +20,9 @@ body {
   color: var(--text-dark);
   line-height: 1.6;
 }
+.serif, .hero-title, .about-title, .experience-title, .portfolio-title, .press-title, .contact-title, .portfolio-book-title, .exp-role, .press-headline {
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
 .container {
   width: 92%;
   max-width: 1100px;
@@ -238,25 +241,21 @@ body {
   width: 320px;
   height: 320px;
   margin: 0 auto;
-}
-.profile-img-bg {
-  position: absolute;
-  inset: 0;
+  background: var(--white);
   border-radius: 50%;
-  background: var(--sage-green-light);
-  filter: blur(32px);
-  opacity: 0.15;
-  z-index: 1;
+  box-shadow: 0 4px 32px rgba(107,142,110,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .profile-img {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  width: 96%;
+  height: 96%;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid var(--white);
-  box-shadow: 0 4px 32px rgba(107,142,110,0.10);
-  z-index: 2;
+  border: 4px solid var(--sage-green);
+  background: #eaeaea;
+  box-shadow: 0 2px 8px rgba(107,142,110,0.07);
 }
 .card {
   position: absolute;
