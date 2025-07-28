@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (workSection && workContainer) {
         // Add scroll snap behavior
-        workSection.style.scrollSnapType = 'x mandatory';
+        workSection.style.scrollSnapType = 'y mandatory';
         
         // Add scroll indicator
         let isScrolling = false;
@@ -46,16 +46,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Keyboard navigation for work section
         document.addEventListener('keydown', function(e) {
             if (document.activeElement.closest('.work')) {
-                if (e.key === 'ArrowLeft') {
+                if (e.key === 'ArrowUp') {
                     e.preventDefault();
                     workSection.scrollBy({
-                        left: -workSection.clientWidth,
+                        top: -workSection.clientHeight,
                         behavior: 'smooth'
                     });
-                } else if (e.key === 'ArrowRight') {
+                } else if (e.key === 'ArrowDown') {
                     e.preventDefault();
                     workSection.scrollBy({
-                        left: workSection.clientWidth,
+                        top: workSection.clientHeight,
                         behavior: 'smooth'
                     });
                 }
@@ -90,38 +90,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add loading animation
-    const sections = document.querySelectorAll('section');
-    
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
+    // Reveal animation using IntersectionObserver
+    const reveals = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target); // animate once
+                }
+            });
+        },
+        {
+            threshold: 0.15,
+        }
+    );
+
+    reveals.forEach((el) => revealObserver.observe(el));
+
+    // Section observer for nav highlight and background color change
+    const pageSections = document.querySelectorAll('section, .work-item');
+    const navLinkMap = {};
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
+        navLinkMap[link.getAttribute('href')] = link;
     });
 
-    // Initialize first section
-    if (sections.length > 0) {
-        sections[0].style.opacity = '1';
-        sections[0].style.transform = 'translateY(0)';
-    }
+    const sectionObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id') ? '#' + entry.target.getAttribute('id') : null;
+
+                    // Update nav link active state
+                    if (id && navLinkMap[id]) {
+                        Object.values(navLinkMap).forEach((lnk) => lnk.classList.remove('active'));
+                        navLinkMap[id].classList.add('active');
+                    }
+
+                    // Update body background from data-bg
+                    if (entry.target.dataset && entry.target.dataset.bg) {
+                        document.body.style.backgroundColor = entry.target.dataset.bg;
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.5,
+        }
+    );
+
+    pageSections.forEach((sec) => sectionObserver.observe(sec));
 });
 
-// Add touch/swipe support for mobile
+// Add touch/swipe support for mobile (vertical)
 let startX = 0;
 let startY = 0;
 
@@ -137,21 +159,21 @@ document.addEventListener('touchend', function(e) {
     const diffX = startX - endX;
     const diffY = startY - endY;
     
-    // Only handle horizontal swipes
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+    // Only handle vertical swipes
+    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
         const workSection = document.querySelector('.work');
         
         if (workSection && document.activeElement.closest('.work')) {
-            if (diffX > 0) {
-                // Swipe left - go to next
+            if (diffY > 0) {
+                // Swipe up - next slide
                 workSection.scrollBy({
-                    left: workSection.clientWidth,
+                    top: workSection.clientHeight,
                     behavior: 'smooth'
                 });
             } else {
-                // Swipe right - go to previous
+                // Swipe down - previous slide
                 workSection.scrollBy({
-                    left: -workSection.clientWidth,
+                    top: -workSection.clientHeight,
                     behavior: 'smooth'
                 });
             }
